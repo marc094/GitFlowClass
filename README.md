@@ -1,5 +1,5 @@
 ## Git Branching Policies:
-# GitFLow
+# Git Flow
 
 ## Introduction:
 If you are new to git and/or to repository management, you have probably never heard of branching policies or what a branching policy is.
@@ -7,9 +7,11 @@ A branching policy is a set of rules which help organise and make it easy to kee
 
 In this page we are going to talk about the 'Git Flow' model, which was depeloped from the [initial proposal by Vincent Driessen](http://nvie.com/posts/a-successful-git-branching-model/).
 
-### Markdown
+***
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Basic Structure
+The Git Flow workflow consists of two main branches: ```master``` and ```develop```. These two branches will be existent from the start of the development and should not be worked on directly, instead, modifications and new features will be developed in separate branches and, after they are finished and verified, merged into them.
+
 
 ```markdown
 Syntax highlighted code block
