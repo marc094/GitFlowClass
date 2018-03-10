@@ -10,7 +10,9 @@ In this page we are going to talk about the 'Git Flow' model, which was depelope
 ***
 
 ### Basic Structure
-The Git Flow workflow consists of two main branches: ```master``` and ```develop```. These two branches will be existent from the start of the development and should not be worked on directly, instead, modifications and new features will be developed in separate branches and, after they are finished and verified, merged into them.
+The Git Flow workflow consists of two main branches: ```master``` and ```develop```.
+These two branches will be existent from the start of the development and should not be worked on directly, instead, modifications and new features will be developed in separate branches (named with the prefix ```feature```) and, after they are finished and verified, merged into them.
+Whenever we consider the state of the development ready for a certain release, a new branch named after the release is created.
 
 
 ```markdown
