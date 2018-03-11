@@ -9,14 +9,20 @@ In this page we are going to talk about the 'Git Flow' model, which was depelope
 
 ***
 
-### Basic Structure
+### Basic Structure: Master & Develop
 The Git Flow workflow consists of two main branches: ```master``` and ```develop```.
 
 These two branches will be existent from the start of the development and should not be worked on directly, instead, modifications and new features will be developed in separate branches (named with the prefix ```feature```) and, after they are finished and verified, merged into them.
 
+### Features
+
+Each new behaviour of our program should be developed in separate branches which branch off of ```develop```. These branches are called ```feature``` branches.
+
+In these branches, each feature is tested and validated before merging with the main ```develop``` branch.
+
 Whenever we consider the state of the development ready for a certain release, a new branch named after the release is created. From there the release must be validated, any issues found should be fixed and commited to said release aswell.
 
-Once the release is considered valid, it is merged into the ```master``` branch and tagged with its version number so that it can be easily recovered if needed. At the same time, all changes done to the release while on the ```release``` branch shall be merged into ```develop``` for further development.
+Once the release is considered valid, it is merged into the ```master``` branch and tagged with its version number so that it can be easily recovered if needed. At the same time, all changes done on the ```release``` branch shall be merged into ```develop``` for further development.
 
 
 ```markdown
