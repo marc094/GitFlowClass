@@ -9,11 +9,13 @@ A branching policy is a set of rules which help organise, keep everything in you
 
 In this page we are going to talk about the 'Git Flow' model, which was depeloped from the [initial proposal by Vincent Driessen](http://nvie.com/posts/a-successful-git-branching-model/).
 
-### Why?
+#### Why?
 
-The need for this kind of ruling arises from the fact that organising a group of people to work together, for the same standards, and make it all work is almost impossible with no clear instructions on how to act in every situation that may come up. Having this kind of instructions and rules prevents any worker from damaging the project (only their local copy at most) by negligence or with intent, since the main branches are protected and can only be manipulated by the administrator.
+The need for this kind of ruling arises from the fact that organising a group of people to work together, for the same standards, and make it all work is almost impossible with no clear instructions on how to act in every situation that may come up. Having this kind of instructions and rules prevents repository damage, since the main branches are protected and can only be manipulated by the administrator.
 
-The administrator is the only user with permission to allow modifications to the main branches such as pull requests and merges. There might be more than one administrator and even be more that one kind of administrator (for example, the Lead Programmer should only manage ```develop``` while the QA Lead manages releases and ```master```).
+The administrator is the only user with permission to allow modifications to the main branches such as pull requests and merges. There might be more than one administrator and even be more that one kind of administrator (for example, the Lead Programmer should only manage ```develop``` and hotfixes while the QA Lead manages releases and ```master```).
+
+The way regular workers interact with these main branches is by branching off from ```develop``` and creating their own fature branches, in which they can develop their fature and merge it back with the main ```develop``` branch (by creating a pull request) after it is finished and has passed all needed verifications. By using this method, we avoid any danger to the project while still keeping all flexibility that a worker may need in his local codebase since he can still make modifications to the original code while not affecting the rest of the development team.
 
 ***
 
@@ -23,7 +25,7 @@ Using Git Flow your repository branching structure should look something like th
 
 ![Basic Git Flow Model (Image by Vincent Driessen)](Images/git-model.png)
 
-In this image each dot represents a commit to a branch and its color the category of the branch. 
+In this image each dot represents a commit to a branch and its color the category of the branch.
 
 But don't be afraid, it's simpler than it looks.
 
@@ -65,6 +67,14 @@ If by any circumstances an already released (live) build of our software were to
 
 In this new branch the issue must be fixed and validated before merging it back to both ```master``` (Updating the already released build) and ```develop``` (To include the fix in future releases). It should be noted that merging the fix back to the ```release``` branch is not needed, since that branch may very well be outdated by the time the hotfix rolls out, and should not be used in the development of the software after the release is completed anyway.
 
+
+***
+
+## Step by Step:
+
+The first thing we should do after creating our empty repository is making sure that we have the ```master``` branch, after that we should create a new branch called ```develop``` branching off from ```master```.
+> git branch --list
+> git checkout -b develop master
 
 ***
 
