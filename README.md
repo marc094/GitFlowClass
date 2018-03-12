@@ -2,12 +2,20 @@
 # Git Flow
 
 ## Introduction:
+
 If you are new to git and/or to repository management, you have probably never heard of branching policies or what a branching policy is.
 
 A branching policy is a set of rules which help organise, keep everything in your repository working as intended, make parallel development easier and make solving any issue related to project structure easy to solve. Using good policies has proven to greatly improve team output when paired with good coordination.
 
 In this page we are going to talk about the 'Git Flow' model, which was depeloped from the [initial proposal by Vincent Driessen](http://nvie.com/posts/a-successful-git-branching-model/).
 
+#### Why?
+
+The need for this kind of ruling arises from the fact that organising a group of people to work together, for the same standards, and make it all work is almost impossible with no clear instructions on how to act in every situation that may come up. Having this kind of instructions and rules prevents repository damage, since the main branches are protected and can only be manipulated by the administrator.
+
+The administrator is the only user with permission to allow modifications to the main branches such as pull requests and merges. There might be more than one administrator and even be more that one kind of administrator (for example, the Lead Programmer should only manage ```develop``` and hotfixes while the QA Lead manages releases and ```master```).
+
+The way regular workers interact with these main branches is by branching off from ```develop``` and creating their own fature branches, in which they can develop their fature and merge it back with the main ```develop``` branch (by creating a pull request) after it is finished and has passed all needed verifications. By using this method, we avoid any danger to the project while still keeping all flexibility that a worker may need in his local codebase since he can still make modifications to the original code while not affecting the rest of the development team.
 
 ***
 
@@ -17,7 +25,7 @@ Using Git Flow your repository branching structure should look something like th
 
 ![Basic Git Flow Model (Image by Vincent Driessen)](Images/git-model.png)
 
-In this image each dot represents a commit to a branch and its color the category of the branch. 
+In this image each dot represents a commit to a branch and its color the category of the branch.
 
 But don't be afraid, it's simpler than it looks.
 
@@ -59,6 +67,104 @@ If by any circumstances an already released (live) build of our software were to
 
 In this new branch the issue must be fixed and validated before merging it back to both ```master``` (Updating the already released build) and ```develop``` (To include the fix in future releases). It should be noted that merging the fix back to the ```release``` branch is not needed, since that branch may very well be outdated by the time the hotfix rolls out, and should not be used in the development of the software after the release is completed anyway.
 
+
+***
+
+## Step by Step:
+
+In the beginning God created his own repository. He typed:
+
+```
+git init
+```
+
+And the repo came to be.
+
+The first thing we should do after creating our empty repository is making sure that we have the ```master``` branch (it is created by default), after that we should create a new branch called ```develop``` branching off from ```master```.
+
+```
+git branch --list                   //listing all branches
+git checkout -b develop master      //creating a new branch called develop and checking out in it
+```
+
+Congratulations! You have your basic repo skeleton, but you want to actually do something with it right?
+
+Let's create our first feature, it will branch off of ```develop```:
+
+```
+git checkout -b new-feature develop
+```
+
+At this point our repository is still empty, and all our branches are in the same state (empty).
+Our feature consists of the incredibly huge amount of 1 (one) file named ```testFeature.txt```.
+
+```
+copy con testFeature.txt
+	//Then we input the body of the file and exit (Ctrl + C)
+	This is a feature (no bugs here)
+```
+
+Perfect, now that we have our feature created, we can commit it to the feature branch:
+
+```
+git add testFeature.txt
+git commit -m "New feature added"
+```
+
+Perfect, now we have our perfect new feature added to the feature branch. Time to merge it with the main ```develop``` branch.
+
+```
+git checkout develop
+git merge new-feature
+```
+
+Great, our fresh new feature is now present in the main development branch. Our project is ready for the first minor release, we'll call it "0.0".
+
+```
+git checkout -b release-0.0 develop
+```
+
+In this branch we should test and fix any bugs that everything is working as intended, and after that, actually make the release.
+
+We do so by merging the release branch with ```master``` and creating a tag with the version at said point.
+
+```
+git checkout master
+git merge release-0.0
+git tag -a v0.0 -m "Release v0.0"
+```
+
+Now our ```master``` branch has a release on it, since it is tagged, it will be stored and it will be easy to access at any point if it were necessary.
+
+But oh, our live release has a **gamebreaking bug!** We need to fix that as soon as possible, in order to do so we need to create a hotfix branch:
+
+```
+git checkout -b hotfix-0.0
+```
+
+Here we can fix the bug by making a small modification to the ```testFeature.txt``` file and after that we commit to the hotfix branch.
+
+```
+git add testFeature.txt
+git commit -m "Fixed feature"
+```
+
+After fixing our release we need to release it again. We will do so by merging it back to the ```master``` branch. We will tag it with the suffix 'a' to indicate that this release is merely a bug-fixing release.
+
+```
+git checkout master
+git merge hotfix-0.0
+git tag -a v0.0a -m "Release v0.0a"
+```
+
+We need to to include this fix inside our current development branch, otherwise the bug would still be present in future releases:
+
+```
+git checkout develop
+git merge hotfix-0.0
+```
+
+Congratulations! If you got here you completed a (simplified) full feature development cycle.
 
 ***
 
