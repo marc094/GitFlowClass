@@ -17,7 +17,7 @@ Using Git Flow your repository branching structure should look something like th
 
 ![Basic Git Flow Model (Image by Vincent Driessen)](Images/git-model.png)
 
-In this image each dot represents a comit to a branch and its color represents the category of the branch. 
+In this image each dot represents a commit to a branch and its color the category of the branch. 
 
 But don't be afraid, it's simpler than it looks.
 
