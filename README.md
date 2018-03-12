@@ -73,8 +73,11 @@ In this new branch the issue must be fixed and validated before merging it back 
 ## Step by Step:
 
 The first thing we should do after creating our empty repository is making sure that we have the ```master``` branch, after that we should create a new branch called ```develop``` branching off from ```master```.
-> git branch --list
-> git checkout -b develop master
+
+```
+git branch --list
+git checkout -b develop master
+```
 
 ***
 
