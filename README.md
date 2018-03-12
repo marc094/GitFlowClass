@@ -2,12 +2,18 @@
 # Git Flow
 
 ## Introduction:
+
 If you are new to git and/or to repository management, you have probably never heard of branching policies or what a branching policy is.
 
 A branching policy is a set of rules which help organise, keep everything in your repository working as intended, make parallel development easier and make solving any issue related to project structure easy to solve. Using good policies has proven to greatly improve team output when paired with good coordination.
 
 In this page we are going to talk about the 'Git Flow' model, which was depeloped from the [initial proposal by Vincent Driessen](http://nvie.com/posts/a-successful-git-branching-model/).
 
+### Why?
+
+The need for this kind of ruling arises from the fact that organising a group of people to work together, for the same standards, and make it all work is almost impossible with no clear instructions on how to act in every situation that may come up. Having this kind of instructions and rules prevents any worker from damaging the project (only their local copy at most) by negligence or with intent, since the main branches are protected and can only be manipulated by the administrator.
+
+The administrator is the only user with permission to allow modifications to the main branches such as pull requests and merges. There might be more than one administrator and even be more that one kind of administrator (for example, the Lead Programmer should only manage ```develop``` while the QA Lead manages releases and ```master```).
 
 ***
 
