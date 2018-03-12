@@ -74,14 +74,16 @@ In this new branch the issue must be fixed and validated before merging it back 
 
 In the beginning God created his own repository. He said:
 
-```git init```!
+```
+git init
+```
 
 And the repo came to be.
 
 The first thing we should do after creating our empty repository is making sure that we have the ```master``` branch, after that we should create a new branch called ```develop``` branching off from ```master```.
 
 ```
-git branch --list					//listing all branches
+git branch --list			//listing all branches
 git checkout -b develop master		//creating a new branch called develop and checking out in it
 ```
 
