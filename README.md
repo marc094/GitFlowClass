@@ -53,11 +53,11 @@ Once the release is considered valid, it is merged into the ```master``` branch 
 
 ### Hotfixes
 
-If by any circumstances an already released (live) build of our software have any critical issue that requires an urgent fix, a new branch called **```hotfix```** may be branched from said release (which can be found in the correspondent tag in the ```master``` branch).
+If by any circumstances an already released (live) build of our software were to have any critical issue that required an urgent fix, a new branch called **```hotfix```** may be branched from said release (which can be found in the correspondent tag in the ```master``` branch).
 
 ![Release & Hotfix (Image by Vincent Driessen)](Images/hotfix-branches.png)
 
-In this new branch the issue must be fixed and validated before merging it back to both ```master``` -- Updating the already released build -- and ```develop``` -- To include the fix in future releases --. It should be noted that merging the fix back to the ```release``` branch is not needed, since that branch may very well be outdated by the time the hotfix rolls out, and should not be used in the development of the software after the release is completed anyway.
+In this new branch the issue must be fixed and validated before merging it back to both ```master``` (Updating the already released build) and ```develop``` (To include the fix in future releases). It should be noted that merging the fix back to the ```release``` branch is not needed, since that branch may very well be outdated by the time the hotfix rolls out, and should not be used in the development of the software after the release is completed anyway.
 
 
 ***
