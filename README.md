@@ -72,7 +72,7 @@ In this new branch the issue must be fixed and validated before merging it back 
 
 ## Step by Step:
 
-In the beginning God created his own repository. He said:
+In the beginning God created his own repository. He typed:
 
 ```
 git init
@@ -80,7 +80,7 @@ git init
 
 And the repo came to be.
 
-The first thing we should do after creating our empty repository is making sure that we have the ```master``` branch, after that we should create a new branch called ```develop``` branching off from ```master```.
+The first thing we should do after creating our empty repository is making sure that we have the ```master``` branch (it is created by default), after that we should create a new branch called ```develop``` branching off from ```master```.
 
 ```
 git branch --list			//listing all branches
@@ -96,7 +96,19 @@ git checkout -b new-feature develop
 ```
 
 At this point our repository is still empty, and all our branches are in the same state (empty).
-Our feature consists of the incredibly huge
+Our feature consists of the incredibly huge amount of 1 (one) file named "testFeature.txt".
+
+```
+copy con testFeature.txt
+	//Then we input the body of the file and exit (Ctrl + C)
+	This is a feature (no bugs here)
+```
+
+Perfect, now that we have our feature created, we can commit it to the feature branch:
+
+```
+git commit -a
+```
 
 ***
 
