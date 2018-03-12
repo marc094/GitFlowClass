@@ -72,12 +72,29 @@ In this new branch the issue must be fixed and validated before merging it back 
 
 ## Step by Step:
 
+In the beginning God created his own repository. He said:
+
+```git init```!
+
+And the repo came to be.
+
 The first thing we should do after creating our empty repository is making sure that we have the ```master``` branch, after that we should create a new branch called ```develop``` branching off from ```master```.
 
 ```
-git branch --list
-git checkout -b develop master
+git branch --list					//listing all branches
+git checkout -b develop master		//creating a new branch called develop and checking out in it
 ```
+
+Congratulations! You have your basic repo skeleton, but you want to actually do something with it right?
+
+Let's create our first feature, it will branch off of ```develop```:
+
+```
+git checkout -b new-feature develop
+```
+
+At this point our repository is still empty, and all our branches are in the same state (empty).
+Our feature consists of the incredibly huge
 
 ***
 
