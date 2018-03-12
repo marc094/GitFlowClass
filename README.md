@@ -83,8 +83,8 @@ And the repo came to be.
 The first thing we should do after creating our empty repository is making sure that we have the ```master``` branch (it is created by default), after that we should create a new branch called ```develop``` branching off from ```master```.
 
 ```
-git branch --list			//listing all branches
-git checkout -b develop master		//creating a new branch called develop and checking out in it
+git branch --list                   //listing all branches
+git checkout -b develop master      //creating a new branch called develop and checking out in it
 ```
 
 Congratulations! You have your basic repo skeleton, but you want to actually do something with it right?
@@ -96,7 +96,7 @@ git checkout -b new-feature develop
 ```
 
 At this point our repository is still empty, and all our branches are in the same state (empty).
-Our feature consists of the incredibly huge amount of 1 (one) file named "testFeature.txt".
+Our feature consists of the incredibly huge amount of 1 (one) file named ```testFeature.txt```.
 
 ```
 copy con testFeature.txt
@@ -107,8 +107,64 @@ copy con testFeature.txt
 Perfect, now that we have our feature created, we can commit it to the feature branch:
 
 ```
-git commit -a
+git add testFeature.txt
+git commit -m "New feature added"
 ```
+
+Perfect, now we have our perfect new feature added to the feature branch. Time to merge it with the main ```develop``` branch.
+
+```
+git checkout develop
+git merge new-feature
+```
+
+Great, our fresh new feature is now present in the main development branch. Our project is ready for the first minor release, we'll call it "0.0".
+
+```
+git checkout -b release-0.0 develop
+```
+
+In this branch we should test and fix any bugs that everything is working as intended, and after that, actually make the release.
+
+We do so by merging the release branch with ```master``` and creating a tag with the version at said point.
+
+```
+git checkout master
+git merge release-0.0
+git tag -a v0.0 -m "Release v0.0"
+```
+
+Now our ```master``` branch has a release on it, since it is tagged, it will be stored and it will be easy to access at any point if it were necessary.
+
+But oh, our live release has a **gamebreaking bug!** We need to fix that as soon as possible, in order to do so we need to create a hotfix branch:
+
+```
+git checkout -b hotfix-0.0
+```
+
+Here we can fix the bug by making a small modification to the ```testFeature.txt``` file and after that we commit to the hotfix branch.
+
+```
+git add testFeature.txt
+git commit -m "Fixed feature"
+```
+
+After fixing our release we need to release it again. We will do so by merging it back to the ```master``` branch. We will tag it with the suffix 'a' to indicate that this release is merely a bug-fixing release.
+
+```
+git checkout master
+git merge hotfix-0.0
+git tag -a v0.0a -m "Release v0.0a"
+```
+
+We need to to include this fix inside our current development branch, otherwise the bug would still be present in future releases:
+
+```
+git checkout develop
+git merge hotfix-0.0
+```
+
+Congratulations! If you got here you completed a (simplified) full feature development cycle.
 
 ***
 
