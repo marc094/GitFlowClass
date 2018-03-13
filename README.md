@@ -104,14 +104,14 @@ copy con testFeature.txt
 	This is a feature (no bugs here)
 ```
 
-Perfect, now that we have our feature created, we can commit it to the feature branch:
+Nice, now that we have our feature created, we can commit it to the feature branch:
 
 ```
 git add testFeature.txt
 git commit -m "New feature added"
 ```
 
-Perfect, now we have our perfect new feature added to the feature branch. Time to merge it with the main ```develop``` branch.
+Perfect, now we have our awesome new feature added to the feature branch. Time to merge it with the main ```develop``` branch.
 
 ```
 git checkout develop
@@ -136,7 +136,7 @@ git tag -a v0.0 -m "Release v0.0"
 
 Now our ```master``` branch has a release on it, since it is tagged, it will be stored and it will be easy to access at any point if it were necessary.
 
-But oh, our live release has a **gamebreaking bug!** We need to fix that as soon as possible, in order to do so we need to create a hotfix branch:
+But oh no! Our live release has a **gamebreaking bug!** We need to fix that as soon as possible, in order to do so we need to create a hotfix branch:
 
 ```
 git checkout -b hotfix-0.0
